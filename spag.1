@@ -1,0 +1,33 @@
+.TH SPAG 1 2024-03-31
+.SH NAME
+\fBspag\fR \- simple password generator
+.SH SYNOPSIS
+.B spag
+[\fIOPTION\fR]...
+.SH DESCRIPTION
+.B spag
+(Simple PAssword Generator) is a simple command-line password generator written in C. By default, it prints to standard output a 16 character random password, that can include majuscules, minuscules, numbers and symbols.
+.SH OPTIONS
+.TP
+.B \-h
+display the list of options and exits
+.TP
+.B \-l \fILENGTH
+set the \fILENGTH\fR of the password(s)
+.TP
+.B \-m
+disable minuscule characters
+.TP
+.B \-M
+disable majuscule characters
+.TP
+.B \-n
+disable numbers
+.TP
+.B \-q \fIQUANTITY
+set the \fIQUANTITY\fR of passwords to be generated
+.TP
+.B \-s
+disable symbols
+.SH AUTHOR
+Written by Lucas Melo Sanginetto <\fIlucamsanginetto@outlook.com\fR>
