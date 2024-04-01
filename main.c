@@ -1,9 +1,9 @@
+#include <getopt.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <unistd.h>
 
 void
 print_help()
@@ -15,13 +15,14 @@ print_help()
     "include majuscules, minuscules, numbers and symbols.\n"
     "\n"
     "Options:\n"
-    "  -h                    display this list of options and exit\n"
-    "  -l LENGTH             set the LENGTH of the password(s)\n"
-    "  -m                    disable minuscule characters\n"
-    "  -M                    disable majuscule characters\n"
-    "  -n                    disable numbers\n"
-    "  -q QUANTITY           set the QUANTITY of passwords to be generated\n"
-    "  -s                    disable symbols\n"
+    "  -h, --help            display this list of options and exit\n"
+    "  -l, --length=LENGTH   set the LENGTH of the password(s)\n"
+    "  -m, --no-minuscules   disable minuscule characters\n"
+    "  -M, --no-majuscules   disable majuscule characters\n"
+    "  -n, --no-numbers      disable numbers\n"
+    "  -q, --quantity=QUANTITY\n"
+    "                        set the QUANTITY of passwords to be generated\n"
+    "  -s, --no-symbols      disable symbols\n"
     ;
     printf("%s", help);
 }
@@ -90,7 +91,26 @@ main(int argc, char *argv[])
 
     // processing any options that were passed to the program
     int c;
-    while ((c = getopt(argc, argv, "hl:mMnq:s")) != -1) {
+    while (1) {
+        static struct option long_options[] =
+        {
+            {"help",          no_argument,       0, 'h'},
+            {"length",        required_argument, 0, 'l'},
+            {"no-minuscules", no_argument,       0, 'm'},
+            {"no-majuscules", no_argument,       0, 'M'},
+            {"no-numbers",    no_argument,       0, 'n'},
+            {"quantity",      required_argument, 0, 'q'},
+            {"no-symbols",    no_argument,       0, 's'},
+            {0, 0, 0, 0}
+        };
+        
+        int option_index = 0;
+
+        c = getopt_long(argc, argv, "hl:mMnq:s", long_options, &option_index);
+
+        if (c == -1)
+            break;
+
         switch (c) {
             case 'h':
                 print_help();
