@@ -11,7 +11,7 @@ print_help()
     char *help =
     "Usage: spag [OPTION]...\n"
     "A simple command-line password generator written in C. By default, it\n"
-    "prints to standard output a 16 character random password, that can\n"
+    "prints to standard output a 20 character random password, that can\n"
     "include majuscules, minuscules, numbers and symbols.\n"
     "\n"
     "Options:\n"
@@ -82,7 +82,7 @@ int
 main(int argc, char *argv[])
 {
     // variables used during password generation and their default values
-    int length = 16;
+    int length = 20;
     int quantity = 1;
     bool majuscules = true;
     bool minuscules = true;

@@ -1,6 +1,6 @@
 # spag
 spag (Simple PAssword Generator) is a simple command-line password generator written in C.
-By default, it prints to standard output a 16 character random password, that can include majuscules, minuscules, numbers and symbols.
+By default, it prints to standard output a 20 character random password, that can include majuscules, minuscules, numbers and symbols.
 
 ## Install
 ```sh
@@ -16,7 +16,7 @@ sudo make install
 
 ## Usage
 ```sh
-# generate a 16 character password
+# generate a 20 character password
 spag
 
 # generate a password without any numbers
